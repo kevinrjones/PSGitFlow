@@ -10,5 +10,9 @@ import com.pluralsight.jacket.entry.service.models.JacketEntry;
 public interface JacketEntryService {
 
     List<JacketEntry> getAllEntries();
+
     void updateEntry(JacketEntry entry);
+
+    public JacketEntry getEntry(long id);
+
 }
