@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.pluralsight.jacket.entry.exceptions.JacketException;
 import org.apache.commons.logging.Log;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,18 +45,22 @@ public class EntryRepositoryEntryDetailsService implements JacketEntryService {
 
 	@Override
 	public JacketEntry getEntry(long id) {
-        Entry e;
-        try {
-            e = repository.findOne(id);
-        } catch (Exception ex) {
-            throw new JacketServiceException("Unable to find entry in repository", ex);
-        }
-        return new JacketEntry(e.getUrl());
+		JacketEntry jacketEntry;
+		try {
+			Entry entry = repository.findOne(id);
+			jacketEntry = new JacketEntry(entry.getUrl());
+
+		} catch (Exception ex) {
+			throw new JacketException("Unable to find entry", ex);
+		}
+ 		return jacketEntry;
 	}
+
 
 	@Override
 	@Transactional(readOnly = false)
 	public void updateEntry(JacketEntry e) {
+		
 	}
 }
 
