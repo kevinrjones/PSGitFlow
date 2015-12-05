@@ -42,6 +42,11 @@ public class EntryRepositoryEntryDetailsService implements JacketEntryService {
     	return serviceEntries;
     }
 
+	@Override
+	public JacketEntry getEntry(long id) {
+		Entry e = repository.findOne(id);
+		return new JacketEntry(e.getUrl());
+	}
 
 	@Override
 	@Transactional(readOnly = false)
