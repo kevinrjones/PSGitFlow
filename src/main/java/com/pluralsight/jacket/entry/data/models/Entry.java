@@ -8,6 +8,7 @@ import javax.persistence.Table;
 @Table(name = "entries")
 public class Entry extends BaseModel {
 
+    // needed for authentication
     private String url;
     private String title;
     
@@ -23,4 +24,4 @@ public class Entry extends BaseModel {
     public void setTitle(String title) {
 	this.title = title;
     }
-}}
+}
