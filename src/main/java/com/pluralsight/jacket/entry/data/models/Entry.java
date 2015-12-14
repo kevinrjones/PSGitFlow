@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "entries")
 public class Entry extends BaseModel {
 
-    // fields used by the database
+    // fields used by the databases
     private String url;
     private String title;
 
